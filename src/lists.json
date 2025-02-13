@@ -1,0 +1,197 @@
+{
+  "FUNDS": {
+    "Schwab": {
+      "US Stock": {
+        "Large Cap": {
+          "ETF": "SCHK",
+          "Mutual Fund": "SNXFX"
+        },
+        "Mid Cap": {
+          "ETF": "SCHM",
+          "Mutual Fund": "SWMCX"
+        },
+        "Small Cap": {
+          "ETF": "SCHA",
+          "Mutual Fund": "SWSSX"
+        }
+      },
+      "International Stock": {
+        "Total International Market": {
+          "ETF": "SCHF",
+          "Mutual Fund": "SWISX"
+        }
+      },
+      "Bond": {
+        "Total US Market": {
+          "ETF": "SCHZ",
+          "Mutual Fund": "SWAGX"
+        }
+      }
+    },
+    "Vanguard": {
+      "US Stock": {
+        "Large Cap": {
+          "ETF": "VTI",
+          "Mutual Fund": "VTSAX"
+        },
+        "Mid Cap": {
+          "ETF": "VO",
+          "Mutual Fund": "VIMAX"
+        },
+        "Small Cap": {
+          "ETF": "VB",
+          "Mutual Fund": "VSMAX"
+        }
+      },
+      "International Stock": {
+        "Total International Market": {
+          "ETF": "VXUS",
+          "Mutual Fund": "VTIAX"
+        }
+      },
+      "Bond": {
+        "Total US Market": {
+          "ETF": "BND",
+          "Mutual Fund": "VBTLX"
+        }
+      }
+    },
+    "Fidelity" : {
+        "US Stock": {
+        "Large Cap": {
+          "ETF": "FBCV",
+          "Mutual Fund": "FZROX"
+        },
+        "Mid Cap": {
+          "ETF": "FSMO",
+          "Mutual Fund": "FSMDX"
+        },
+        "Small Cap": {
+          "ETF": "FSMO",
+          "Mutual Fund": "FSSNX"
+        }
+      },
+      "International Stock": {
+        "Total International Market": {
+          "ETF": "FDEV",
+          "Mutual Fund": "FZILX"
+        }
+      },
+      "Bond": {
+        "Total US Market": {
+          "ETF": "FBND",
+          "Mutual Fund": "FXNAX"
+        }
+      }
+    }
+  },
+  "WEIGHT": {
+    "Aggressive": {
+      "US Stock": {
+        "US Large Cap": 0.54,
+        "US Small Cap": 0.13
+      },
+      "International Stock": {
+        "Total International Market": 0.25
+      },
+      "Bond": {
+        "Total US Bond Market": 0.08
+      },
+      "Cash": {
+        "CASH": 0.0
+      }
+    },
+    "Moderately Aggressive": {
+      "US Stock": {
+        "US Large Cap": 0.5,
+        "US Small Cap": 0.1
+      },
+      "International Stock": {
+        "Total International Market": 0.22
+      },
+      "Bond": {
+        "Total US Bond Market": 0.18
+      },
+      "Cash": {
+        "CASH": 0.0
+      }
+    },
+    "Moderate": {
+      "US Stock": {
+        "US Large Cap": 0.48,
+        "US Small Cap": 0.05
+      },
+      "International Stock": {
+        "Total International Market": 0.17
+      },
+      "Bond": {
+        "Total US Bond Market": 0.3
+      },
+      "Cash": {
+        "CASH": 0.0
+      }
+    },
+    "Moderately Conservative": {
+      "US Stock": {
+        "US Large Cap": 0.47,
+        "US Small Cap": 0.0
+      },
+      "International Stock": {
+        "Total International Market": 0.13
+      },
+      "Bond": {
+        "Total US Bond Market": 0.4
+      },
+      "Cash": {
+        "CASH": 0.0
+      }
+    },
+    "Conservative": {
+      "US Stock": {
+        "US Large Cap": 0.3,
+        "US Small Cap": 0.0
+      },
+      "International Stock": {
+        "Total International Market": 0.1
+      },
+      "Bond": {
+        "Total US Bond Market": 0.55
+      },
+      "Cash": {
+        "CASH": 0.05
+      }
+    }
+  },
+  "RISK": {
+    "Aggressive": {
+      "US Stock": 0.67,
+      "International Stock": 0.25,
+      "Bond": 0.08,
+      "Cash": 0.0
+    },
+    "Moderately Aggressive": {
+      "US Stock": 0.6,
+      "International Stock": 0.22,
+      "Bond": 0.18,
+      "Cash": 0.0
+    },
+    "Moderate": {
+      "US Stock": 0.53,
+      "International Stock": 0.17,
+      "Bond": 0.3,
+      "Cash": 0.0
+    },
+    "Moderately Conservative": {
+      "US Stock": 0.47,
+      "International Stock": 0.13,
+      "Bond": 0.4,
+      "Cash": 0.0
+    },
+    "Conservative": {
+      "US Stock": 0.3,
+      "International Stock": 0.1,
+      "Bond": 0.55,
+      "Cash": 0.05
+    }
+  }
+}

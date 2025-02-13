@@ -1,0 +1,188 @@
+.baseAge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 390px;
+  height: 844px;
+  background: #2f2e2e;
+  background-blend-mode: normal;
+  box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+}
+
+.slideBarAge {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 50px;
+  width: 300px;
+  height: 48px;
+  border-radius: 8px;
+  border: solid #dedede;
+  background: #15803d;
+  background-blend-mode: normal;
+  box-shadow: 0px 4px 4px rgba(0,0,0,0.5);
+}
+
+.slideHighlightAge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 48px;
+  border-radius: 4px;
+  background: #0e582a;
+  background-blend-mode: normal;
+  cursor: pointer;
+}
+
+.age {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 22px;
+  color: #dedede;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.riskAge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 22px;
+  color: #dedede;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.fundingAge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 22px;
+  color: #dedede;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.greenBoxAge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
+  height: 487px;
+  border-radius: 8px;
+  border: solid #dedede;
+  background: #15803d;
+  background-blend-mode: normal;
+  box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+}
+
+.ageRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 40px auto;
+  gap: 45px;
+  line-height: 1;
+}
+
+.currentAge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 96px;
+  height: 58.51px;
+  color: #dedede;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.currentAge input {
+  font-size: 18px;
+}
+
+.ageInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 10px 0px;
+  width: 88px;
+  height: 29px;
+  border: 1px solid #bdbdbd;
+  background: #ffffff;
+  background-blend-mode: normal;
+  color: black;
+}
+
+.retireAge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 96px;
+  height: 58.51px;
+  color: #dedede;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.retireAge input {
+  font-size: 18px;
+}
+
+
+.textOutput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 244px;
+  height: 202px;
+  border-radius: 4px;
+  border: solid #dedede;
+  background: #0e582a;
+  background-blend-mode: normal;
+}
+
+.textOutput p {
+  padding: 0 16px;
+  font-size: 20px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 93px;
+  height: 40px;
+  border: 1px solid #dedede;
+  background: #2f2e2e;
+  background-blend-mode: normal;
+}
+
+  .link {
+    color: white;
+  }
+
+  .link:hover {
+    color: white;
+  }
