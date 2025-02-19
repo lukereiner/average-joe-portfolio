@@ -35,8 +35,12 @@ const Age = () => {
         <div className="slideHighlightAge">
           <div className="age">Age</div>
         </div>
-        <div className="fundingAge">Funding</div>
-        <div className="riskAge">Risk</div>
+        <div className="fundingAge">
+          <Link className="link" to='../funding'>Funding</Link>
+        </div>
+        <div className="riskAge">
+          <Link className="link" to='../risk'>Risk</Link>
+        </div>
       </div>
       <div className="greenBoxAge">
         <div className="ageRow">

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Funding.css";
 import { AppContext } from "../../AppContext";
 
@@ -116,7 +116,11 @@ const Funding = () => {
         <div className="slideHighlightFunding">
           <div className="fundingFunding">Funding</div>
         </div>
-        <div className="riskFunding">Risk</div>
+        <div className="riskFunding">
+            <Link className="link" to='../risk'>
+                Risk
+            </Link>
+        </div>
       </div>
       <div className="greenBoxFunding">
         <div className="fundingRow">
@@ -177,7 +181,7 @@ const Funding = () => {
         <div className="textOutput">
           <p>{displayOutput()}</p>
         </div>
-        <Link className="link" to="/funding">
+        <Link className="link" to="/risk">
           <div className="button">Next</div>
         </Link>
       </div>
