@@ -103,7 +103,7 @@
     justify-content: space-between;
     margin-top: 20px;
     margin-right: 10px;
-    gap: 20px;
+    gap: 15px;
     line-height: 1;
   }
   
@@ -145,7 +145,7 @@
     align-items: center;
     justify-content: center;
     width: 244px;
-    height: 202px;
+    height: 225px;
     border-radius: 4px;
     border: solid #dedede;
     background: #0e582a;
@@ -153,8 +153,7 @@
   }
   
   .textOutput p {
-    padding: 0 16px;
-    font-size: 20px;
+    font-size: 18px;
   }
   
   .button {

@@ -5,15 +5,18 @@ import "./index.css";
 import Welcome from "./components/Welcome";
 import Age from "./components/Age";
 import Funding from "./components/Funding";
+import { AppProvider } from "../AppContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route path="age" element={<Age />} />
-        <Route path="funding" element={<Funding />} />
-      </Routes>
-    </BrowserRouter>
+    <AppProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Welcome />} />
+          <Route path="age" element={<Age />} />
+          <Route path="funding" element={<Funding />} />
+        </Routes>
+      </BrowserRouter>
+    </AppProvider>
   </StrictMode>
 );
