@@ -23,11 +23,11 @@ const Risk = () => {
 
   const handleSliderOutput = () => {
     const riskDef = {
-        1: `I want to earn some income from my investments now, without taking on too much risk. I'm primarily focused on keeping my money safe.`,
-        2: `I want a steady income from my investments and some potential for growth over time. I'm willing to take on a bit more risk than someone who's very conservative, but not so much that it worries me.`,
-        3: `I'm looking for steady growth in the value of my investments and am comfortable with some ups and downs along the way. While I don't want too much volatility, I understand that there may be some fluctuations in the market.`,
-        4: `I'm interested in growing my wealth as quickly as possible, but I still want to be cautious. I can handle a bit more risk than someone who's moderate, but not so much that it feels reckless.`,
-        5: `I'm focused on rapid growth and am willing to take on significant risk to achieve it. I understand that this means there's a chance I could lose money, but I believe the potential rewards outweigh the risks.`,
+      1: `I want to earn some income from my investments now, without taking on too much risk. I'm primarily focused on keeping my money safe.`,
+      2: `I want a steady income from my investments and some potential for growth over time. I'm willing to take on a bit more risk than someone who's very conservative, but not so much that it worries me.`,
+      3: `I'm looking for steady growth in the value of my investments and am comfortable with some ups and downs along the way. While I don't want too much volatility, I understand that there may be some fluctuations in the market.`,
+      4: `I'm interested in growing my wealth as quickly as possible, but I still want to be cautious. I can handle a bit more risk than someone who's moderate, but not so much that it feels reckless.`,
+      5: `I'm focused on rapid growth and am willing to take on significant risk to achieve it. I understand that this means there's a chance I could lose money, but I believe the potential rewards outweigh the risks.`,
     };
 
     return riskDef[value];
@@ -35,11 +35,11 @@ const Risk = () => {
 
   const handleSliderProflile = () => {
     const investorProfiles = {
-        1: 'Conservative',
-        2: 'Moderately Conservative',
-        3: 'Moderate',
-        4: 'Moderately Aggressive',
-        5: 'Aggressive',
+      1: "Conservative",
+      2: "Moderately Conservative",
+      3: "Moderate",
+      4: "Moderately Aggressive",
+      5: "Aggressive",
     };
 
     return investorProfiles[value];
@@ -65,11 +65,11 @@ const Risk = () => {
 
       <div className="greenBoxRisk">
         <div className="sliderOutput">
-            <h1>Investor Risk Profile: {handleSliderProflile()}</h1>
-            {handleSliderOutput()}
+          <h1>Investor Risk Profile: {handleSliderProflile()}</h1>
+          {handleSliderOutput()}
         </div>
         <div className="sliderbar">
-          <Box sx={{ width: 185 }}>
+          <Box sx={{ width: 190 }}>
             <Slider
               className="slider"
               aria-label="Risk Profile"
@@ -99,7 +99,7 @@ const Risk = () => {
           </Box>
         </div>
         <div className="buttonWrapper">
-          <Link className="link" to="/">
+          <Link className="link" to="../portfolio">
             <div className="button">Generate Portfolio</div>
           </Link>
         </div>
