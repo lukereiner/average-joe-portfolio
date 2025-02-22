@@ -15,8 +15,12 @@ export const AppProvider = ({ children }) => {
     firm: localStorage.getItem("firm") || "",
   });
 
+  const [riskData, setRiskData] = useState({
+    risk: parseInt(localStorage.getItem("risk")) || "",
+  });
+
   return (
-    <AppContext.Provider value={{ ageData, setAgeData, fundingData, setFundingData }}>
+    <AppContext.Provider value={{ ageData, setAgeData, fundingData, setFundingData, riskData, setRiskData }}>
       {children}
     </AppContext.Provider>
   );

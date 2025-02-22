@@ -1,11 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Risk.css";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
+import { AppContext } from "../../AppContext";
 
 const Risk = () => {
-  const [value, setValue] = useState(3); // State to track the current slider value
+  const { riskData, setRiskData } = useContext(AppContext); // Access the context
+  const [risk, setRisk] = useState(riskData.risk); // State to track the current slider value
+
+  useEffect(() => {
+    // Save the current risk value to localStorage
+    localStorage.setItem("risk", risk);
+
+    // Update the context with the new risk value
+    setRiskData((prevData) => ({ ...prevData, risk }));
+  }, [risk, setRiskData]); // Dependency array: re-run when `risk` or `setRiskData` changes
+
+  useEffect(() => {
+    // Initialize risk from localStorage on component mount
+    const savedRisk = localStorage.getItem("risk");
+    if (savedRisk) {
+      setRisk(parseInt(savedRisk));
+      setRiskData((prevData) => ({ ...prevData, risk: parseInt(savedRisk) }));
+    }
+  }, [setRiskData]);
+
   const marks = [
     {
       value: 1,
@@ -17,8 +37,8 @@ const Risk = () => {
     },
   ];
 
-  const handleSliderChange = (event, newValue) => {
-    setValue(newValue); // Update the state when slider value changes
+  const handleSliderChange = (event, newRisk) => {
+    setRisk(newRisk); // Update the state when slider value changes
   };
 
   const handleSliderOutput = () => {
@@ -30,7 +50,7 @@ const Risk = () => {
       5: `I'm focused on rapid growth and am willing to take on significant risk to achieve it. I understand that this means there's a chance I could lose money, but I believe the potential rewards outweigh the risks.`,
     };
 
-    return riskDef[value];
+    return riskDef[risk];
   };
 
   const handleSliderProflile = () => {
@@ -42,7 +62,7 @@ const Risk = () => {
       5: "Aggressive",
     };
 
-    return investorProfiles[value];
+    return investorProfiles[risk];
   };
 
   return (
@@ -73,7 +93,7 @@ const Risk = () => {
             <Slider
               className="slider"
               aria-label="Risk Profile"
-              value={value}
+              value={risk}
               onChange={handleSliderChange}
               valueLabelDisplay="off"
               step={1}
@@ -83,7 +103,7 @@ const Risk = () => {
                   <span
                     style={{
                       color: "white",
-                      fontWeight: mark.value === value ? "bold" : "normal",
+                      fontWeight: mark.value === risk ? "bold" : "normal",
                     }}
                   >
                     {mark.label}
