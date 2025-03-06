@@ -40,3 +40,5 @@ exports.firm = firm;
 exports.fundType = fundType;
 exports.riskFundWeights = riskFundWeights;
 exports.riskAllocationWeights = riskAllocationWeights;
+
+console.log('hello');
