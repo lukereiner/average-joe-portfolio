@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../AppContext";
 import data from "../lists.json";
+import './Table.css'
 
 const investorProfiles = {
   1: "Conservative",
@@ -62,28 +63,28 @@ const Table = () => {
         </tr>
         <tr>
           <td className="left">Large Cap ({largeCapFund})</td>
-          <td>${largeCapAmt}</td>
-          <td>${largeCapAmtMonth}</td>
+          <td className="right">${largeCapAmt}</td>
+          <td className="right">${largeCapAmtMonth}</td>
         </tr>
         <tr>
           <td className="left">Small Cap ({smallCapFund})</td>
-          <td>${smallCapAmt}</td>
-          <td>${smallCapAmtMonth}</td>
+          <td className="right">${smallCapAmt}</td>
+          <td className="right">${smallCapAmtMonth}</td>
         </tr>
         <tr>
           <td className="left">International ({internationalFund})</td>
-          <td>${internationalAmt}</td>
-          <td>${internationalAmtMonth}</td>
+          <td className="right">${internationalAmt}</td>
+          <td className="right">${internationalAmtMonth}</td>
         </tr>
         <tr>
           <td className="left">Bonds ({bondFund})</td>
-          <td>${bondAmt}</td>
-          <td>${bondAmtMonth}</td>
+          <td className="right">${bondAmt}</td>
+          <td className="right">${bondAmtMonth}</td>
         </tr>
         <tr>
           <td className="left">Cash</td>
-          <td>${cashAmt}</td>
-          <td>${cashAmtMonth}</td>
+          <td className="right">${cashAmt}</td>
+          <td className="right">${cashAmtMonth}</td>
         </tr>
       </table>
     </div>
