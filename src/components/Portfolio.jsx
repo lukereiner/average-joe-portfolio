@@ -3,21 +3,27 @@ import "./Portfolio.css";
 import Table from "./Table";
 import PiePlate from "./PiePlate";
 import Returns from "./Returns";
+import { Link } from "react-router-dom";
 
 const Portfolio = () => {
+
   return (
     <>
-      <div className="basePortfolio">
-        <PiePlate />
+      <div className="topPortfolio">
+        <div className="topHalf">
+          <PiePlate id="piePlate" />
 
-        <div>
-          <Table />
+          <Table id="table" />
+
         </div>
 
-      </div>
+        <div className="bottomHalf">
+          <Returns id="chart" />
 
-      <div className="basePortfolio">
-        <Returns />
+          <Link className="link" to="/age">
+            <div className="button">Edit Info</div>
+          </Link>
+        </div>
       </div>
     </>
   );

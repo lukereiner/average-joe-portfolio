@@ -1,16 +1,17 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import {
   AreaChart,
   Area,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
 import "./Returns.css";
+import { AppContext } from "../../AppContext";
+import data from "../lists.json";
 
-const data = [
+const chartData = [
   {
     year: "0",
     amt: 100,
@@ -30,18 +31,20 @@ const data = [
 ];
 
 const formatNumber = (number) => {
-    return number.toLocaleString();
-  };
+  return number.toLocaleString();
+};
 
 const Returns = () => {
+
   return (
     <>
+      <h2>Portfolio Value</h2>
       <div className="chart">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             width={500}
             height={400}
-            data={data}
+            data={chartData}
             margin={{
               top: 10,
               right: 30,
@@ -63,13 +66,6 @@ const Returns = () => {
             <YAxis
               tick={{ fill: "white" }}
               stroke="white"
-              label={{
-                value: "Amount",
-                angle: -90,
-                position: "insideLeft",
-                offset: -5,
-                fill: "white",
-              }}
               tickFormatter={formatNumber}
             />
             <Tooltip />
@@ -81,6 +77,12 @@ const Returns = () => {
             />
           </AreaChart>
         </ResponsiveContainer>
+      </div>
+      <div className="avgReturn">
+        <strong>Average Return:</strong> 10%
+      </div>
+      <div className="estValue">
+        <strong>Estimated Value:</strong> $1.5M
       </div>
     </>
   );

@@ -20,13 +20,13 @@ const Table = () => {
   const portRisk = riskData.risk;
 
   // FUNDS
-  const largeCapFund = data.FUNDS[firm]["US Stock"]["Large Cap"]["Mutual Fund"];
-  const smallCapFund = data.FUNDS[firm]["US Stock"]["Small Cap"]["Mutual Fund"];
+  const largeCapFund = data.FUNDS[firm]["US Stock"]["Large Cap"]["ETF"];
+  const smallCapFund = data.FUNDS[firm]["US Stock"]["Small Cap"]["ETF"];
   const internationalFund =
     data.FUNDS[firm]["International Stock"]["Total International Market"][
-      "Mutual Fund"
+      "ETF"
     ];
-  const bondFund = data.FUNDS[firm]["Bond"]["Total US Market"]["Mutual Fund"];
+  const bondFund = data.FUNDS[firm]["Bond"]["Total US Market"]["ETF"];
 
   // WEIGHTS
   const largeCapWeight =

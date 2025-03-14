@@ -1,4 +1,13 @@
 .chart {
-    width: 100%;
+    width: 100vw;
     height: 50%;
+}
+
+.avgReturn {
+    margin-top: 20px;
+}
+
+.estValue {
+    margin-top: 10px;
+    margin-bottom: 60px;
 }
