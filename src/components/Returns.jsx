@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {
   AreaChart,
   Area,
@@ -8,8 +8,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import "./Returns.css";
-import { AppContext } from "../../AppContext";
-import data from "../lists.json";
+//import { AppContext } from "../../AppContext";
+//import data from "../lists.json";
 
 const chartData = [
   {
@@ -35,6 +35,15 @@ const formatNumber = (number) => {
 };
 
 const Returns = () => {
+
+    const [stockPrices, setStockPrices] = useState([]);
+    const symbols = ['AAPL', 'NFLX']
+
+    useEffect(() => {
+        fetch(`http://192.168.50.11:3001/api/stockPrices?symbols=${symbols}`)
+            .then(res => res.json())
+            .then(stockData => setStockPrices(stockData));
+    }, []);
 
   return (
     <>
@@ -84,6 +93,14 @@ const Returns = () => {
       <div className="estValue">
         <strong>Estimated Value:</strong> $1.5M
       </div>
+      <div>
+        <h3>Stock Prices</h3>
+        {stockPrices.map((stock) => (
+          <div key={stock.symbol}>
+            <p>{stock.symbol}: ${stock.price}</p>
+          </div>
+      ))}
+    </div>
     </>
   );
 };

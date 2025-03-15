@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../AppContext";
 import data from "../lists.json";
-import './Table.css'
+import "./Table.css";
 
 const investorProfiles = {
   1: "Conservative",
@@ -47,7 +47,9 @@ const Table = () => {
   const smallCapAmt = (initDeposit * smallCapWeight).toLocaleString();
   const smallCapAmtMonth = (monthlyDeposit * smallCapWeight).toLocaleString();
   const internationalAmt = (initDeposit * internationalWeight).toLocaleString();
-  const internationalAmtMonth = (monthlyDeposit * internationalWeight).toLocaleString();
+  const internationalAmtMonth = (
+    monthlyDeposit * internationalWeight
+  ).toLocaleString();
   const bondAmt = (initDeposit * bondWeight).toLocaleString();
   const bondAmtMonth = (monthlyDeposit * bondWeight).toLocaleString();
   const cashAmt = (initDeposit * cashWeight).toLocaleString();
@@ -56,36 +58,38 @@ const Table = () => {
   return (
     <div className="table">
       <table>
-        <tr>
-          <th id="leftFund">Investment Fund</th>
-          <th>Initial</th>
-          <th>Monthly</th>
-        </tr>
-        <tr>
-          <td className="left">Large Cap ({largeCapFund})</td>
-          <td className="right">${largeCapAmt}</td>
-          <td className="right">${largeCapAmtMonth}</td>
-        </tr>
-        <tr>
-          <td className="left">Small Cap ({smallCapFund})</td>
-          <td className="right">${smallCapAmt}</td>
-          <td className="right">${smallCapAmtMonth}</td>
-        </tr>
-        <tr>
-          <td className="left">International ({internationalFund})</td>
-          <td className="right">${internationalAmt}</td>
-          <td className="right">${internationalAmtMonth}</td>
-        </tr>
-        <tr>
-          <td className="left">Bonds ({bondFund})</td>
-          <td className="right">${bondAmt}</td>
-          <td className="right">${bondAmtMonth}</td>
-        </tr>
-        <tr>
-          <td className="left">Cash</td>
-          <td className="right">${cashAmt}</td>
-          <td className="right">${cashAmtMonth}</td>
-        </tr>
+        <tbody>
+          <tr>
+            <th id="leftFund">Investment Fund</th>
+            <th>Initial</th>
+            <th>Monthly</th>
+          </tr>
+          <tr>
+            <td className="left">Large Cap ({largeCapFund})</td>
+            <td className="right">${largeCapAmt}</td>
+            <td className="right">${largeCapAmtMonth}</td>
+          </tr>
+          <tr>
+            <td className="left">Small Cap ({smallCapFund})</td>
+            <td className="right">${smallCapAmt}</td>
+            <td className="right">${smallCapAmtMonth}</td>
+          </tr>
+          <tr>
+            <td className="left">International ({internationalFund})</td>
+            <td className="right">${internationalAmt}</td>
+            <td className="right">${internationalAmtMonth}</td>
+          </tr>
+          <tr>
+            <td className="left">Bonds ({bondFund})</td>
+            <td className="right">${bondAmt}</td>
+            <td className="right">${bondAmtMonth}</td>
+          </tr>
+          <tr>
+            <td className="left">Cash</td>
+            <td className="right">${cashAmt}</td>
+            <td className="right">${cashAmtMonth}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );
