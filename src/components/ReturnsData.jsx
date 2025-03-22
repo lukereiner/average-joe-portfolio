@@ -53,6 +53,8 @@ const ReturnsData = () => {
   const [stockPrices, setStockPrices] = useState([]);
   const symbols = [largeCapFund, smallCapFund, internationalFund, bondFund];
   const [loading, setLoading] = useState(true);
+  const [earlyHistoric, setEarlyHistoric] = useState([]);
+  const [latestHistoric, setLatestHistoric] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -60,21 +62,21 @@ const ReturnsData = () => {
       .then((res) => res.json())
       .then((stockData) => {
         setStockPrices(stockData);
-        setLoading(false);
 
         // Log the priceListEarliest only once after fetching data
         if (stockData.length > 0) {
           const priceListEarliest = [];
           for (let i = 0; i < stockData.length; i++) {
             const firstItem = stockData[i][0]; // Access the first element directly
-            priceListEarliest.push(
-              `${symbols[i]} ${firstItem.adjClose.toFixed(2)}`
-            );
+            priceListEarliest.push(firstItem.adjClose);
 
             // Stop adding once we have 4 elements
-            if (priceListEarliest.length >= 4) break;
+            if (priceListEarliest.length >= 4) {
+              setEarlyHistoric(priceListEarliest);
+              break;
+            }
           }
-          console.log(priceListEarliest);
+          //console.log(priceListEarliest);
         }
 
         // Log the priceList only once after fetching data
@@ -83,15 +85,18 @@ const ReturnsData = () => {
           for (let i = 0; i < stockData.length; i++) {
             const lastIndex = stockData[i].length - 1;
             const lastItem = stockData[i][lastIndex];
-            priceListLatest.push(
-              `${symbols[i]} ${lastItem.adjClose.toFixed(2)}`
-            );
+            priceListLatest.push(lastItem.adjClose);
 
             // Stop adding once we have 4 elements
-            if (priceListLatest.length >= 4) break;
+            if (priceListLatest.length >= 4) {
+              setLatestHistoric(priceListLatest);
+              break;
+            }
           }
-          console.log(priceListLatest);
+          //console.log(priceListLatest);
         }
+
+        setLoading(false);
       });
   }, []);
 
@@ -116,10 +121,36 @@ const ReturnsData = () => {
     console.log(priceList);
   }; */
 
+  const portfolioReturn = () => {
+    let largeRetBegin = earlyHistoric[0];
+    let largeRetEnd = latestHistoric[0];
+    let largeRetPercent = (((largeRetEnd - largeRetBegin) / largeRetBegin) * 100).toFixed(2);
+
+    let smallRetBegin = earlyHistoric[1];
+    let smallRetEnd = latestHistoric[1];
+    let smallRetPercent = (((smallRetEnd - smallRetBegin) / smallRetBegin) * 100).toFixed(2);
+
+    let intRetBegin = earlyHistoric[2];
+    let intRetEnd = latestHistoric[2];
+    let intRetPercent = (((intRetEnd - intRetBegin) / intRetBegin) * 100).toFixed(2);
+
+    let bondRetBegin = earlyHistoric[3];
+    let bondRetEnd = latestHistoric[3];
+    let bondRetPercent = (((bondRetEnd - bondRetBegin) / bondRetBegin) * 100).toFixed(2);
+
+    // WEIGHTING
+    
+
+    return bondRetPercent;
+  };
+
   return (
     <div>
       <div className="avgReturn">
         <strong>Average Return:</strong> 10%
+        <div>Port Return: {portfolioReturn()}%</div>
+        <div>${earlyHistoric[3].toFixed(2)}</div>
+        <div>${latestHistoric[3].toFixed(2)}</div>
       </div>
       <div className="estValue">
         <strong>Estimated Value:</strong> $1.5M
