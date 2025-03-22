@@ -72,7 +72,7 @@ app.get("/api/stockPrices/historical", async (req, res) => {
     }
 
     // Fetch chart data for each symbol
-    const stockDataPromises = symbols.map(symbol => yahooFinance.historical(symbol, { period1: '1900-01-01', period2: '2025-03-18' }));
+    const stockDataPromises = symbols.map(symbol => yahooFinance.historical(symbol, { period1: '1900-01-01', period2: '2025-03-18', interval: "1mo" }));
     const stockData = await Promise.all(stockDataPromises);
 
     res.json(stockData);

@@ -53,8 +53,10 @@ const ReturnsData = () => {
   const [stockPrices, setStockPrices] = useState([]);
   const symbols = [largeCapFund, smallCapFund, internationalFund, bondFund];
   const [loading, setLoading] = useState(true);
-  const [earlyHistoric, setEarlyHistoric] = useState([]);
-  const [latestHistoric, setLatestHistoric] = useState([]);
+  const [earlyHistoricPrice, setearlyHistoricPrice] = useState([]);
+  const [earlyHistoricDate, setearlyHistoricDate] = useState([]);
+  const [latestHistoricPrice, setlatestHistoricPrice] = useState([]);
+  const [latestHistoricDate, setLatestHistoricDate] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -66,34 +68,40 @@ const ReturnsData = () => {
         // Log the priceListEarliest only once after fetching data
         if (stockData.length > 0) {
           const priceListEarliest = [];
+          const dateListEarliest = [];
           for (let i = 0; i < stockData.length; i++) {
             const firstItem = stockData[i][0]; // Access the first element directly
             priceListEarliest.push(firstItem.adjClose);
+            const formatEarlyDate = new Date(firstItem.date);
+            dateListEarliest.push(formatEarlyDate.toISOString().split('T')[0]);
 
             // Stop adding once we have 4 elements
             if (priceListEarliest.length >= 4) {
-              setEarlyHistoric(priceListEarliest);
+              setearlyHistoricPrice(priceListEarliest);
+              setearlyHistoricDate(dateListEarliest);
               break;
             }
           }
-          //console.log(priceListEarliest);
         }
 
         // Log the priceList only once after fetching data
         if (stockData.length > 0) {
           const priceListLatest = [];
+          const dateListLatest = [];
           for (let i = 0; i < stockData.length; i++) {
             const lastIndex = stockData[i].length - 1;
             const lastItem = stockData[i][lastIndex];
             priceListLatest.push(lastItem.adjClose);
+            const formatLatestDate = new Date(lastItem.date);
+            dateListLatest.push(formatLatestDate.toISOString().split('T')[0]);
 
             // Stop adding once we have 4 elements
             if (priceListLatest.length >= 4) {
-              setLatestHistoric(priceListLatest);
+              setlatestHistoricPrice(priceListLatest);
+              setLatestHistoricDate(dateListLatest);
               break;
             }
           }
-          //console.log(priceListLatest);
         }
 
         setLoading(false);
@@ -122,26 +130,26 @@ const ReturnsData = () => {
   }; */
 
   const portfolioReturn = () => {
-    let largeRetBegin = earlyHistoric[0];
-    let largeRetEnd = latestHistoric[0];
+    let largeRetBegin = earlyHistoricPrice[0];
+    let largeRetEnd = latestHistoricPrice[0];
     let largeRetPercent = (((largeRetEnd - largeRetBegin) / largeRetBegin) * 100).toFixed(2);
 
-    let smallRetBegin = earlyHistoric[1];
-    let smallRetEnd = latestHistoric[1];
+    let smallRetBegin = earlyHistoricPrice[1];
+    let smallRetEnd = latestHistoricPrice[1];
     let smallRetPercent = (((smallRetEnd - smallRetBegin) / smallRetBegin) * 100).toFixed(2);
 
-    let intRetBegin = earlyHistoric[2];
-    let intRetEnd = latestHistoric[2];
+    let intRetBegin = earlyHistoricPrice[2];
+    let intRetEnd = latestHistoricPrice[2];
     let intRetPercent = (((intRetEnd - intRetBegin) / intRetBegin) * 100).toFixed(2);
 
-    let bondRetBegin = earlyHistoric[3];
-    let bondRetEnd = latestHistoric[3];
+    let bondRetBegin = earlyHistoricPrice[3];
+    let bondRetEnd = latestHistoricPrice[3];
     let bondRetPercent = (((bondRetEnd - bondRetBegin) / bondRetBegin) * 100).toFixed(2);
 
     // WEIGHTING
-    
+    let portReturn = ((largeRetPercent * largeCapWeight) + (smallRetPercent * smallCapWeight) + (intRetPercent * internationalWeight) + (bondRetPercent * bondWeight)).toFixed(0);
 
-    return bondRetPercent;
+    return portReturn;
   };
 
   return (
@@ -149,8 +157,11 @@ const ReturnsData = () => {
       <div className="avgReturn">
         <strong>Average Return:</strong> 10%
         <div>Port Return: {portfolioReturn()}%</div>
-        <div>${earlyHistoric[3].toFixed(2)}</div>
-        <div>${latestHistoric[3].toFixed(2)}</div>
+        <div>${earlyHistoricPrice[0].toFixed(2)}</div>
+        <div>${latestHistoricPrice[0].toFixed(2)}</div>
+        <div>Early: {earlyHistoricDate[0]}</div>
+        <div>Latest: {latestHistoricDate[0]}</div>
+        <div>year diff: {latestHistoricDate}</div>
       </div>
       <div className="estValue">
         <strong>Estimated Value:</strong> $1.5M
