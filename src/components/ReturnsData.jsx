@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import "./Returns.css";
 import { AppContext } from "../../AppContext";
 import data from "../lists.json";
+import { stepClasses } from "@mui/material";
 
 const ReturnsData = () => {
   // INVESTOR RISK PROFILES
@@ -51,56 +52,64 @@ const ReturnsData = () => {
 
   // FETCH AND HANDLE YAHOO FINANCE
   const [stockPrices, setStockPrices] = useState([]);
+  const [expRatio, setExpRatio] = useState([]);
   const symbols = [largeCapFund, smallCapFund, internationalFund, bondFund];
   const [loading, setLoading] = useState(true);
   const [earlyHistoricPrice, setearlyHistoricPrice] = useState([]);
-  const [earlyHistoricDate, setearlyHistoricDate] = useState([]);
   const [latestHistoricPrice, setlatestHistoricPrice] = useState([]);
-  const [latestHistoricDate, setLatestHistoricDate] = useState([]);
+  const [monthlyAnnReturn, setMonthlyAnnReturn] = useState([]);
 
   useEffect(() => {
     fetch(
-      `http://192.168.50.11:3001/api/stockPrices/historical?symbols=${symbols.join(",")}`)
+      `http://192.168.50.11:3001/api/stockPrices/historical?symbols=${symbols.join(
+        ","
+      )}`
+    )
       .then((res) => res.json())
       .then((stockData) => {
         setStockPrices(stockData);
 
+        if (stockData.length > 0) {
+            let monthlyData = {};
+            for (let i = 0; i < stockData.length; i++) {
+                let monthlyPrices = [];
+                for (let z = 0; z < stockData[i].length; z++) {
+                    //console.log(stockData[i].length);
+                    monthlyPrices.push(stockData[i][z].adjClose);
+                    //monReturns.push(stockData[i][z].adjClose)
+                }
+                monthlyData[symbols[i]] = monthlyPrices;
+                if (i > 3) {
+                    break;
+                };
+            }
+            //console.log(monReturns[344]["fund"])
+            setMonthlyAnnReturn(monthlyData);
+        }
+
         // Log the priceListEarliest only once after fetching data
         if (stockData.length > 0) {
-          const priceListEarliest = [];
-          const dateListEarliest = [];
+          const monthlyReturns = [];
           for (let i = 0; i < stockData.length; i++) {
             const firstItem = stockData[i][0]; // Access the first element directly
-            priceListEarliest.push(firstItem.adjClose);
-            const formatEarlyDate = new Date(firstItem.date);
-            dateListEarliest.push(formatEarlyDate.toISOString().split('T')[0]);
+            console.log(firstItem.adjClose);
+            console.log(stockData.length);
+            //monthlyReturns.push(firstItem.adjClose);
 
-            // Stop adding once we have 4 elements
-            if (priceListEarliest.length >= 4) {
-              setearlyHistoricPrice(priceListEarliest);
-              setearlyHistoricDate(dateListEarliest);
+            if (i > 3) {
               break;
             }
           }
+          //setMonthlyAnnReturn(monthlyReturns);
         }
 
         // Log the priceList only once after fetching data
         if (stockData.length > 0) {
           const priceListLatest = [];
-          const dateListLatest = [];
           for (let i = 0; i < stockData.length; i++) {
             const lastIndex = stockData[i].length - 1;
             const lastItem = stockData[i][lastIndex];
             priceListLatest.push(lastItem.adjClose);
-            const formatLatestDate = new Date(lastItem.date);
-            dateListLatest.push(formatLatestDate.toISOString().split('T')[0]);
-
-            // Stop adding once we have 4 elements
-            if (priceListLatest.length >= 4) {
-              setlatestHistoricPrice(priceListLatest);
-              setLatestHistoricDate(dateListLatest);
-              break;
-            }
           }
         }
 
@@ -108,60 +117,93 @@ const ReturnsData = () => {
       });
   }, []);
 
+  // GRABS AND SET EXPENSE RATIOS FOR FUNDS
+  useEffect(() => {
+    fetch(
+      `http://192.168.50.11:3001/api/stockPrices/insights?symbols=${symbols.join(
+        ","
+      )}`
+    )
+      .then((res) => res.json())
+      .then((stockInsights) => {
+        // Log the priceListEarliest only once after fetching data
+        if (stockInsights.length > 0) {
+          const expList = [];
+          for (let i = 0; i < stockInsights.length; i++) {
+            const firstItem = stockInsights[i]["netExpenseRatio"]; // Access the first element directly
+            expList.push(firstItem);
+
+            // Stop adding once we have 4 elements
+            if (expList.length >= 4) {
+              setExpRatio(expList);
+              break;
+            }
+          }
+        }
+      });
+  }, []);
+
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  /* stockPrices.forEach((subArray, index) => {
-    const lastIndex = subArray.length - 1;
-    const lastItem = subArray[lastIndex];
-    console.log(`Stock Prices Array ${index}: Last Index: ${lastIndex}, Last Item AdjClose: ${lastItem.adjClose.toFixed(2)}`);
-  }); */
-
-  /* for (let i = 0; i < 1; i++) {
-    const priceList = [];
-    stockPrices.forEach((subArray, i) => {
-        const lastIndex = subArray.length - 1;
-        const lastItem = subArray[lastIndex];
-        priceList.push(lastItem.adjClose.toFixed(2));
-        i++;
-      });
-    console.log(priceList);
-  }; */
-
   const portfolioReturn = () => {
     let largeRetBegin = earlyHistoricPrice[0];
     let largeRetEnd = latestHistoricPrice[0];
-    let largeRetPercent = (((largeRetEnd - largeRetBegin) / largeRetBegin) * 100).toFixed(2);
+    let largeRetPercent = (
+      ((largeRetEnd - largeRetBegin) / largeRetBegin) *
+      100
+    ).toFixed(2);
 
     let smallRetBegin = earlyHistoricPrice[1];
     let smallRetEnd = latestHistoricPrice[1];
-    let smallRetPercent = (((smallRetEnd - smallRetBegin) / smallRetBegin) * 100).toFixed(2);
+    let smallRetPercent = (
+      ((smallRetEnd - smallRetBegin) / smallRetBegin) *
+      100
+    ).toFixed(2);
 
     let intRetBegin = earlyHistoricPrice[2];
     let intRetEnd = latestHistoricPrice[2];
-    let intRetPercent = (((intRetEnd - intRetBegin) / intRetBegin) * 100).toFixed(2);
+    let intRetPercent = (
+      ((intRetEnd - intRetBegin) / intRetBegin) *
+      100
+    ).toFixed(2);
 
     let bondRetBegin = earlyHistoricPrice[3];
     let bondRetEnd = latestHistoricPrice[3];
-    let bondRetPercent = (((bondRetEnd - bondRetBegin) / bondRetBegin) * 100).toFixed(2);
+    let bondRetPercent = (
+      ((bondRetEnd - bondRetBegin) / bondRetBegin) *
+      100
+    ).toFixed(2);
 
     // WEIGHTING
-    let portReturn = ((largeRetPercent * largeCapWeight) + (smallRetPercent * smallCapWeight) + (intRetPercent * internationalWeight) + (bondRetPercent * bondWeight)).toFixed(0);
+    let portReturn = (
+      largeRetPercent * largeCapWeight +
+      smallRetPercent * smallCapWeight +
+      intRetPercent * internationalWeight +
+      bondRetPercent * bondWeight
+    ).toFixed(0);
 
     return portReturn;
   };
+
+  const expensePrint = () => {
+    let arr = [];
+    expRatio.forEach((etf, index) => {
+      arr.push(`${symbols[index]}: ${etf}% `);
+    });
+    return arr;
+  };
+
+  console.log(monthlyAnnReturn["SCHK"])
 
   return (
     <div>
       <div className="avgReturn">
         <strong>Average Return:</strong> 10%
         <div>Port Return: {portfolioReturn()}%</div>
-        <div>${earlyHistoricPrice[0].toFixed(2)}</div>
-        <div>${latestHistoricPrice[0].toFixed(2)}</div>
-        <div>Early: {earlyHistoricDate[0]}</div>
-        <div>Latest: {latestHistoricDate[0]}</div>
-        <div>year diff: {latestHistoricDate}</div>
+        <div>Expense Ratios: {expensePrint()}</div>
+        <div>Monthly Price: {monthlyAnnReturn["SCHK"].length}</div>
       </div>
       <div className="estValue">
         <strong>Estimated Value:</strong> $1.5M
