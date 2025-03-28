@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from "react";
 import "./Returns.css";
 import { AppContext } from "../../AppContext";
 import data from "../lists.json";
-import { stepClasses } from "@mui/material";
 
 const ReturnsData = () => {
   // INVESTOR RISK PROFILES
@@ -15,11 +14,12 @@ const ReturnsData = () => {
   };
 
   const { ageData, fundingData, riskData } = useContext(AppContext);
-  const initDeposit = fundingData.investment;
-  const monthlyDeposit = fundingData.deposit;
+  const initDeposit = parseInt(fundingData.investment);
+  const monthlyDeposit = parseInt(fundingData.deposit);
   const account = fundingData.account;
   const firm = fundingData.firm;
   const portRisk = riskData.risk;
+  const yearsToInvest = ageData.retireAge - ageData.currentAge;
 
   // FUNDS
   const largeCapFund = data.FUNDS[firm]["US Stock"]["Large Cap"]["ETF"];
@@ -56,7 +56,6 @@ const ReturnsData = () => {
   const symbols = [largeCapFund, smallCapFund, internationalFund, bondFund];
   const [loading, setLoading] = useState(true);
   const [averageMonthlyReturn, setAverageMonthlyReturn] = useState([]);
-  const [averagePortfolioReturn, setAveragePortfolioReturn] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -105,7 +104,7 @@ const ReturnsData = () => {
               avgReturns[symbol] = (sum / monthlyDelta.length) * 12;
             }
           }
-          console.log(avgReturns);
+          //console.log(avgReturns);
           setAverageMonthlyReturn(avgReturns);
         }
 
@@ -127,7 +126,7 @@ const ReturnsData = () => {
           const expList = [];
           for (let i = 0; i < stockInsights.length; i++) {
             const firstItem = stockInsights[i]["netExpenseRatio"]; // Access the first element directly
-            expList.push(firstItem);
+            expList.push(firstItem / 100);
 
             // Stop adding once we have 4 elements
             if (expList.length >= 4) {
@@ -144,65 +143,50 @@ const ReturnsData = () => {
   }
 
   const portfolioReturn = () => {
-    let largeRetBegin = earlypriceplaceholder[0];
-    let largeRetEnd = latestpriceplaceholder[0];
-    let largeRetPercent = (
-      ((largeRetEnd - largeRetBegin) / largeRetBegin) *
-      100
-    ).toFixed(2);
+    let largeRetPercent = averageMonthlyReturn[largeCapFund] * largeCapWeight;
+    let smallRetPercent = averageMonthlyReturn[smallCapFund] * smallCapWeight;
+    let internationalRetPercent = averageMonthlyReturn[internationalFund] * internationalWeight;
+    let bondRetPercent = averageMonthlyReturn[bondFund] * bondWeight;
 
-    let smallRetBegin = earlypriceplaceholder[1];
-    let smallRetEnd = latestpriceplaceholder[1];
-    let smallRetPercent = (
-      ((smallRetEnd - smallRetBegin) / smallRetBegin) *
-      100
-    ).toFixed(2);
-
-    let intRetBegin = earlypriceplaceholder[2];
-    let intRetEnd = latestpriceplaceholder[2];
-    let intRetPercent = (
-      ((intRetEnd - intRetBegin) / intRetBegin) *
-      100
-    ).toFixed(2);
-
-    let bondRetBegin = earlypriceplaceholder[3];
-    let bondRetEnd = latestpriceplaceholder[3];
-    let bondRetPercent = (
-      ((bondRetEnd - bondRetBegin) / bondRetBegin) *
-      100
-    ).toFixed(2);
-
-    // WEIGHTING
-    let portReturn = (
-      largeRetPercent * largeCapWeight +
-      smallRetPercent * smallCapWeight +
-      intRetPercent * internationalWeight +
-      bondRetPercent * bondWeight
-    ).toFixed(0);
+    const portReturn = (largeRetPercent + smallRetPercent + internationalRetPercent + bondRetPercent);
 
     return portReturn;
   };
 
-  const expensePrint = () => {
-    let arr = [];
-    expRatio.forEach((etf, index) => {
-      arr.push(`${symbols[index]}: ${etf}% `);
-    });
-    return arr;
-  };
+  let myTest = [];
+  // CALCULATE PORTFOLIO VALUE OVER TIME
+  const portfolioValue = () => {
+    const portfolioValues = [];
+    const returnPercent = portfolioReturn();
+    let currentValue = initDeposit; // Initial investment from Funding.jsx
+
+    for (let year = 1; year <= yearsToInvest; year++) {
+            const portFees = ((largeCapWeight * expRatio[0]) + (smallCapWeight * expRatio[1]) + (internationalWeight * expRatio[2]) + (bondWeight * expRatio[3])); // Fees per year as a percentage (i.e. 0.05%)
+            const inflation = 0.03; // Assume 3% inflation
+
+            for (let month = 1; month <= 12; month++) {
+                let monthlyCompoundRate = ((1 + returnPercent) ** (1/12)) - 1;
+                currentValue += monthlyDeposit; // Monthly deposit from Funding.jsx
+                currentValue *= (1 + monthlyCompoundRate);
+            };
+            currentValue *= (1 - portFees); // Reduce amount by portFees
+            currentValue *= (1 - inflation);
+
+        myTest.push(currentValue.toFixed(0));
+    }
+    return portfolioValues;
+};
+
+portfolioValue();
 
   return (
     <div>
       <div className="avgReturn">
-        <strong>Average Return:</strong> 10%
-        <div>Port Return: {portfolioReturn}%</div>
-        <div>Expense Ratios: {expensePrint()}</div>
-        <div>
-          Annualized Return: {(averageMonthlyReturn["SCHK"] * 100).toFixed(2)}%
-        </div>
+        <div><strong>Average Return:</strong> {(portfolioReturn()*100).toFixed(0)}%</div>
       </div>
       <div className="estValue">
-        <strong>Estimated Value:</strong> $1.5M
+        <div><strong>Estimated Value:</strong> $1.5M</div>
+        <div>Portfolio Value: {myTest[7]}</div>
       </div>
     </div>
   );

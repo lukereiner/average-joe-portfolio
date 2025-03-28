@@ -25,7 +25,7 @@ const chartData = [
   },
   {
     year: "20",
-    amt: 3500,
+    amt: "500",
   },
 ];
 
