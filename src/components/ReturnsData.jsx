@@ -138,6 +138,10 @@ const ReturnsData = () => {
       });
   }, []);
 
+  const formatNumberWithCommas = (num) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -153,10 +157,10 @@ const ReturnsData = () => {
     return portReturn;
   };
 
-  let myTest = [];
   // CALCULATE PORTFOLIO VALUE OVER TIME
+  const portfolioValues = [];
   const portfolioValue = () => {
-    const portfolioValues = [];
+    
     const returnPercent = portfolioReturn();
     let currentValue = initDeposit; // Initial investment from Funding.jsx
 
@@ -172,12 +176,14 @@ const ReturnsData = () => {
             currentValue *= (1 - portFees); // Reduce amount by portFees
             currentValue *= (1 - inflation);
 
-        myTest.push(currentValue.toFixed(0));
+        portfolioValues.push(currentValue.toFixed(0));
     }
     return portfolioValues;
 };
 
 portfolioValue();
+
+const formattedPortfolioValues = portfolioValues.map(value => formatNumberWithCommas(parseInt(value)));
 
   return (
     <div>
@@ -185,8 +191,7 @@ portfolioValue();
         <div><strong>Average Return:</strong> {(portfolioReturn()*100).toFixed(0)}%</div>
       </div>
       <div className="estValue">
-        <div><strong>Estimated Value:</strong> $1.5M</div>
-        <div>Portfolio Value: {myTest[7]}</div>
+        <div><strong>Estimated Value:</strong> ${formattedPortfolioValues[yearsToInvest - 1]}</div>
       </div>
     </div>
   );
