@@ -247,6 +247,17 @@ const Returns = () => {
             <XAxis
               dataKey="year"
               tick={{ fill: "white" }}
+              ticks={(() => {
+                const tickInterval = Math.ceil(yearsToInvest / 5);
+                const lastYear = (portfolioValues.length - 1).toString();
+                const ticks = portfolioValues
+                  .map((_, index) => index.toString())
+                  .filter((year, index) => index % tickInterval === 0);
+                if (!ticks.includes(lastYear)) {
+                  ticks.push(lastYear);
+                }
+                return ticks;
+              })()}
               stroke="white"
               label={{
                 value: "Year",
@@ -260,7 +271,7 @@ const Returns = () => {
               stroke="white"
               tickFormatter={formatNumber}
             />
-            <Tooltip />
+            <Tooltip formatter={(value) => formatNumberWithCommas(value)} />
             <Area
               type="monotone"
               dataKey="amt"
