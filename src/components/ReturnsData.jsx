@@ -188,7 +188,7 @@ const formattedPortfolioValues = portfolioValues.map(value => formatNumberWithCo
   return (
     <div>
       <div className="avgReturn">
-        <div><strong>Average Return:</strong> {(portfolioReturn()*100).toFixed(0)}%</div>
+        <div><strong>Average Return:</strong> {(portfolioReturn()*100).toFixed(2)}%</div>
       </div>
       <div className="estValue">
         <div><strong>Estimated Value:</strong> ${formattedPortfolioValues[yearsToInvest - 1]}</div>
