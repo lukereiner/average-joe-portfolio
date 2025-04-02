@@ -88,110 +88,110 @@
   "WEIGHT": {
     "Aggressive": {
       "US Stock": {
-        "US Large Cap": 0.54,
-        "US Small Cap": 0.13
+        "US Large Cap": 0.53,
+        "US Small Cap": 0.20
       },
       "International Stock": {
         "Total International Market": 0.25
       },
       "Bond": {
-        "Total US Bond Market": 0.08
+        "Total US Bond Market": 0.00
       },
       "Cash": {
-        "CASH": 0.0
+        "CASH": 0.02
       }
     },
     "Moderately Aggressive": {
       "US Stock": {
-        "US Large Cap": 0.5,
-        "US Small Cap": 0.1
+        "US Large Cap": 0.45,
+        "US Small Cap": 0.15
       },
       "International Stock": {
-        "Total International Market": 0.22
+        "Total International Market": 0.20
       },
       "Bond": {
-        "Total US Bond Market": 0.18
+        "Total US Bond Market": 0.15
       },
       "Cash": {
-        "CASH": 0.0
+        "CASH": 0.05
       }
     },
     "Moderate": {
       "US Stock": {
-        "US Large Cap": 0.48,
-        "US Small Cap": 0.05
+        "US Large Cap": 0.35,
+        "US Small Cap": 0.10
       },
       "International Stock": {
-        "Total International Market": 0.17
+        "Total International Market": 0.15
       },
       "Bond": {
-        "Total US Bond Market": 0.3
+        "Total US Bond Market": 0.35
       },
       "Cash": {
-        "CASH": 0.0
+        "CASH": 0.05
       }
     },
     "Moderately Conservative": {
       "US Stock": {
-        "US Large Cap": 0.47,
-        "US Small Cap": 0.0
+        "US Large Cap": 0.25,
+        "US Small Cap": 0.05
       },
       "International Stock": {
-        "Total International Market": 0.13
+        "Total International Market": 0.10
       },
       "Bond": {
-        "Total US Bond Market": 0.4
+        "Total US Bond Market": 0.50
       },
       "Cash": {
-        "CASH": 0.0
+        "CASH": 0.10
       }
     },
     "Conservative": {
       "US Stock": {
-        "US Large Cap": 0.3,
-        "US Small Cap": 0.0
+        "US Large Cap": 0.15,
+        "US Small Cap": 0.00
       },
       "International Stock": {
-        "Total International Market": 0.1
+        "Total International Market": 0.05
       },
       "Bond": {
-        "Total US Bond Market": 0.55
+        "Total US Bond Market": 0.50
       },
       "Cash": {
-        "CASH": 0.05
+        "CASH": 0.30
       }
     }
   },
   "RISK": {
     "Aggressive": {
-      "US Stock": 0.67,
+      "US Stock": 0.73,
       "International Stock": 0.25,
-      "Bond": 0.08,
-      "Cash": 0.0
+      "Bond": 0.00,
+      "Cash": 0.02
     },
     "Moderately Aggressive": {
       "US Stock": 0.6,
-      "International Stock": 0.22,
-      "Bond": 0.18,
-      "Cash": 0.0
+      "International Stock": 0.20,
+      "Bond": 0.15,
+      "Cash": 0.05
     },
     "Moderate": {
-      "US Stock": 0.53,
-      "International Stock": 0.17,
-      "Bond": 0.3,
-      "Cash": 0.0
+      "US Stock": 0.45,
+      "International Stock": 0.15,
+      "Bond": 0.35,
+      "Cash": 0.05
     },
     "Moderately Conservative": {
-      "US Stock": 0.47,
-      "International Stock": 0.13,
-      "Bond": 0.4,
-      "Cash": 0.0
+      "US Stock": 0.30,
+      "International Stock": 0.10,
+      "Bond": 0.50,
+      "Cash": 0.10
     },
     "Conservative": {
-      "US Stock": 0.3,
-      "International Stock": 0.1,
-      "Bond": 0.55,
-      "Cash": 0.05
+      "US Stock": 0.15,
+      "International Stock": 0.05,
+      "Bond": 0.50,
+      "Cash": 0.30
     }
   }
 }

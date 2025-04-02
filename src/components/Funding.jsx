@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Funding.css";
 import { AppContext } from "../../AppContext";
@@ -90,18 +90,6 @@ const Funding = () => {
       return;
     } else {
       return limitCalc(userAge, fundingData.deposit, userAccount);
-    }
-  };
-
-  // Original before limitCalc addition
-  const displayOutputCopy = () => {
-    const yearlyDeposit = fundingData.deposit * 12;
-    const userAge = ageData.currentAge;
-
-    if (!fundingData.account) {
-      return;
-    } else {
-      return `$${yearlyDeposit}, Age: ${userAge}`;
     }
   };
 

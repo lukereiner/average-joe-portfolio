@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Welcome.css'
 
 const Welcome = () => {
@@ -9,9 +9,9 @@ const Welcome = () => {
             <div className='greenBox'>
                 <div className='averageJoe'>Average Joe Portfolio</div>
                 <div className='slogan'>Your one stop shop for anyone to build an investment portfolio</div>
-                <Link to='/age'>
+                <Link to='/guide'>
                     <div className='startButton'>
-                        <div className='startButtonLabel'>Get Started</div>
+                        <div className='startButtonLabel'>Next</div>
                     </div>
                 </Link>
             </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, createContext, useContext } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Age.css";
 import { AppContext } from "../../AppContext";
 

@@ -1,0 +1,65 @@
+.guideCSS {
+    padding: 4px 6vw;
+}
+
+.guideAge {
+    width: 100%;
+    background-color: #15803D;
+    border-radius: 8px;
+    border: 2px solid white;
+    margin: 24px 0px;
+}
+
+.guideFunding {
+    width: 100%;
+    background-color: #15803D;
+    border-radius: 8px;
+    border: 2px solid white;
+    margin: 24px 0px;
+}
+
+.guideRisk {
+    width: 100%;
+    background-color: #15803D;
+    border-radius: 8px;
+    border: 2px solid white;
+    margin: 24px 0px;
+}
+
+.guidePortfolio {
+    width: 100%;
+    background-color: #15803D;
+    border-radius: 8px;
+    border: 2px solid white;
+    margin: 24px 0px;
+}
+
+h2 {
+    margin-top: 4px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+h3 {
+    padding: 0px 16px;
+    line-height: 0.5;
+}
+
+p {
+    padding: 0px 16px;
+}
+
+.guideDisclaimer {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: gold;
+    margin-bottom: 16px;
+}
+
+#buttonGuide {
+    margin: 0 auto;
+    margin-bottom: 50px;
+    text-align: center;
+    white-space: nowrap;
+}
+

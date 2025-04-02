@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import Welcome from "./components/Welcome";
+import Guide from "./components/Guide";
 import Age from "./components/Age";
 import Funding from "./components/Funding";
 import Risk from "./components/Risk";
@@ -15,6 +16,7 @@ createRoot(document.getElementById("root")).render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Welcome />} />
+          <Route path="guide" element={<Guide />} />
           <Route path="age" element={<Age />} />
           <Route path="funding" element={<Funding />} />
           <Route path="risk" element={<Risk />} />

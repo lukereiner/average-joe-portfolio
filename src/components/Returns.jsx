@@ -12,24 +12,6 @@ import { AppContext } from "../../AppContext";
 import data from "../lists.json";
 
 const Returns = () => {
-  const chartData = [
-    {
-      year: "0",
-      amt: 100,
-    },
-    {
-      year: "5",
-      amt: 500,
-    },
-    {
-      year: "10",
-      amt: 1500,
-    },
-    {
-      year: "20",
-      amt: "500",
-    },
-  ];
 
   const formatNumber = (number) => {
     return number.toLocaleString();
