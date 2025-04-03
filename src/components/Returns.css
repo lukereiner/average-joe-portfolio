@@ -1,5 +1,7 @@
 .chart {
-    width: 90vw;
+    margin: 0 auto;
+    min-width: 350px;
+    max-width: 450px;
     height: 50%;
 }
 

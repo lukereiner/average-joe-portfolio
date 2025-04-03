@@ -6,6 +6,7 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
+  CartesianGrid,
 } from "recharts";
 import "./Returns.css";
 import { AppContext } from "../../AppContext";
@@ -14,7 +15,7 @@ import data from "../lists.json";
 const Returns = () => {
 
   const formatNumber = (number) => {
-    return number.toLocaleString();
+    return `$${number.toLocaleString()}`;
   };
 
   // INVESTOR RISK PROFILES
@@ -29,7 +30,6 @@ const Returns = () => {
   const { ageData, fundingData, riskData } = useContext(AppContext);
   const initDeposit = parseInt(fundingData.investment);
   const monthlyDeposit = parseInt(fundingData.deposit);
-  const account = fundingData.account;
   const firm = fundingData.firm;
   const portRisk = riskData.risk;
   const yearsToInvest = ageData.retireAge - ageData.currentAge;
@@ -54,14 +54,6 @@ const Returns = () => {
     ];
   const bondWeight =
     data.WEIGHT[investorProfiles[portRisk]]["Bond"]["Total US Bond Market"];
-  const cashWeight = data.WEIGHT[investorProfiles[portRisk]]["Cash"]["CASH"];
-
-  // PORTFOLIO BREAKDOWN
-  const largeCapAmt = initDeposit * largeCapWeight;
-  const smallCapAmt = initDeposit * smallCapWeight;
-  const internationalAmt = initDeposit * internationalWeight;
-  const bondAmt = initDeposit * bondWeight;
-  const cashAmt = initDeposit * cashWeight;
 
   // FETCH AND HANDLE YAHOO FINANCE
   const [stockPrices, setStockPrices] = useState([]);
@@ -207,25 +199,27 @@ const Returns = () => {
   const formattedPortfolioValues = portfolioValues.map((value) =>
     formatNumberWithCommas(parseInt(value))
   );
+
   return (
     <>
       <h2>Portfolio Value</h2>
       <div className="chart">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
-            width={500}
+            width={530}
             height={400}
             data={portfolioValues.map((value, index) => ({
               year: index.toString(),
               amt: parseInt(value),
             }))}
             margin={{
-              top: 10,
-              right: 30,
-              left: 20,
+              top: 0,
+              right: 10,
+              left: 35,
               bottom: 20,
             }}
           >
+            <CartesianGrid strokeDasharray="3 1" strokeOpacity={0.4}/>
             <XAxis
               dataKey="year"
               tick={{ fill: "white" }}

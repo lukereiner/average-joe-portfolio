@@ -13,21 +13,9 @@ const PiePlate = () => {
     5: "Aggressive",
   };
 
-  const { ageData, fundingData, riskData } = useContext(AppContext);
+  const { fundingData, riskData } = useContext(AppContext);
   const initDeposit = fundingData.investment;
-  const monthlyDeposit = fundingData.deposit;
-  const account = fundingData.account;
-  const firm = fundingData.firm;
   const portRisk = riskData.risk;
-
-  // FUNDS
-  const largeCapFund = data.FUNDS[firm]["US Stock"]["Large Cap"]["Mutual Fund"];
-  const smallCapFund = data.FUNDS[firm]["US Stock"]["Small Cap"]["Mutual Fund"];
-  const internationalFund =
-    data.FUNDS[firm]["International Stock"]["Total International Market"][
-      "Mutual Fund"
-    ];
-  const bondFund = data.FUNDS[firm]["Bond"]["Total US Market"]["Mutual Fund"];
 
   // WEIGHTS
   const largeCapWeight =
@@ -93,8 +81,8 @@ const PiePlate = () => {
   };
 
   return (
-    <div className="pieChart" style={{ width: "100%", height: 400 }}>
-      <PieChart width={400} height={400}>
+    <div className="pieChart" style={{ width: "100%", height: 350 }}>
+      <PieChart width={400} height={350}>
         <Pie
           data={filteredData}
           dataKey="value"

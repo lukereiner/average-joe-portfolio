@@ -6,7 +6,7 @@ import Returns from "./Returns";
 import { Link } from "react-router-dom";
 
 const Portfolio = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true); //change back to true for loading screen to show
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -29,6 +29,7 @@ const Portfolio = () => {
     <>
       <div className="topPortfolio">
         <div className="topHalf">
+          <div id="portfolioAllocation">Portfolio Allocation</div>
           <PiePlate id="piePlate" />
 
           <Table id="table" />
