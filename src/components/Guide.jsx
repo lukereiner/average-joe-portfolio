@@ -52,16 +52,16 @@ const Guide = () => {
           <h3>Investment Funds 💼</h3>
           <p>
             Your portfolio will consist of large, small, and international
-            companies, and depending on risk profile, bonds and cash.
+            companies, and depending on risk profile, bonds and cash
           </p>
           <p>
             Investing in large, small, and international stock will be the
             primary drivers for growth, while bonds and cash are typically used
-            for hedging against stock market drops, or for safety.
+            for hedging against stock market drops, or for safety
           </p>
           <p>
             Each fund has a ticker in parentheses, along with how much you'd
-            allocate your initial and monthly deposits towards. <strong>The ticker is what you would search when buying shares.</strong>
+            allocate your initial and monthly deposits towards. <strong>The ticker is what you would search when buying shares</strong>
           </p>
           <h3>Average Return 📈</h3>
           <p>
@@ -71,19 +71,19 @@ const Guide = () => {
           <h3>Estimated Value 💸</h3>
           <p>
             The final value of your portfolio at retirement, based on historical
-            returns and your risk profile.
+            returns and your risk profile
           </p>
           <p>
-            This number takes into account fund fees and yearly inflation of 3%.
+            This number accounts for fund fees and yearly inflation of 3%
           </p>
           <p>
-            At retirement age, your portfolio will be larger, but the estimated
+            At retirement age, your portfolio value will be larger, but the estimated
             value shows your purchasing power in today's dollars
           </p>
         </div>
         <div className="guideDisclaimer">
         🛑 Currently, this tool doesn't take into consideration tapering off
-            into safer investments in later years or dividend reinvestment.
+            into safer investments in later years or dividend reinvestment 🛑
         </div>
       </div>
       <Link to="/age">

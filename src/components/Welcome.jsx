@@ -1,23 +1,22 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import './Welcome.css'
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Welcome.css";
 
 const Welcome = () => {
   return (
     <>
-        <div className='base'>
-            <div className='greenBox'>
-                <div className='averageJoe'>Average Joe Portfolio</div>
-                <div className='slogan'>The one stop shop for anyone to build an investment portfolio</div>
-                <Link to='/guide'>
-                    <div className='startButton'>
-                        <div className='startButtonLabel'>Next</div>
-                    </div>
-                </Link>
+      <div className="welcome-page-background">
+        <div className="title">
+          <img src="src\assets\title-page.png" alt="" id="avgJoeImg" />
+          <Link to="/guide">
+            <div className="startButton" id="welcomeButton">
+              <div className="startButtonLabel">Begin</div>
             </div>
+          </Link>
         </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Welcome
+export default Welcome;
