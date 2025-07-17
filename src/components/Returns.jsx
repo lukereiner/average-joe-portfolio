@@ -64,7 +64,7 @@ const Returns = () => {
 
   useEffect(() => {
     fetch(
-      `http://192.168.50.11:3001/api/stockPrices/historical?symbols=${symbols.join(
+      `${import.meta.env.VITE_HISTORICAL_URL}${symbols.join(
         ","
       )}`
     )
@@ -120,7 +120,7 @@ const Returns = () => {
   // GRABS AND SET EXPENSE RATIOS FOR FUNDS
   useEffect(() => {
     fetch(
-      `http://192.168.50.11:3001/api/stockPrices/insights?symbols=${symbols.join(
+      `${import.meta.env.VITE_INSIGHTS_URL}${symbols.join(
         ","
       )}`
     )

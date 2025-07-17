@@ -97,7 +97,7 @@ const PiePlate = () => {
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
-        <Tooltip />
+        <Tooltip formatter={(value) => new Intl.NumberFormat('en').format(value)} />
       </PieChart>
     </div>
   );
