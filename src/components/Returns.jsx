@@ -77,8 +77,8 @@ const Returns = () => {
           let monthlyData = {};
           for (let i = 0; i < stockData.length; i++) {
             let monthlyPrices = [];
-            for (let z = 0; z < stockData[i].length; z++) {
-              monthlyPrices.push(stockData[i][z].adjClose);
+            for (let z = 0; z < stockData[i]["quotes"].length; z++) {
+              monthlyPrices.push(stockData[i]["quotes"][z].adjclose);
             }
 
             monthlyData[symbols[i]] = monthlyPrices;

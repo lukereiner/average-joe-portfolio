@@ -71,9 +71,9 @@ app.get("/api/stockPrices/historical", async (req, res) => {
       return res.status(400).json({ error: "No symbols provided" });
     }
 
-    // Fetch chart data for each symbol
+    // Fetch chart data for each symbol - Switched from .historical() to .chart() 7/22/25
     const stockDataPromises = symbols.map((symbol) =>
-      yahooFinance.historical(symbol, {
+      yahooFinance.chart(symbol, {
         period1: "1900-01-01",
         interval: "1mo",
       })
@@ -81,6 +81,8 @@ app.get("/api/stockPrices/historical", async (req, res) => {
     const stockData = await Promise.all(stockDataPromises);
 
     res.json(stockData);
+    //console.log(stockData[1]["quotes"]);
+    //console.log(stockData);
   } catch (error) {
     console.error("Error fetching stock data:", error);
     res.status(500).json({ error: "Failed to fetch stock data." });
