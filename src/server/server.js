@@ -81,8 +81,6 @@ app.get("/api/stockPrices/historical", async (req, res) => {
     const stockData = await Promise.all(stockDataPromises);
 
     res.json(stockData);
-    //console.log(stockData[1]["quotes"]);
-    //console.log(stockData);
   } catch (error) {
     console.error("Error fetching stock data:", error);
     res.status(500).json({ error: "Failed to fetch stock data." });
@@ -114,6 +112,6 @@ app.get("/api/stockPrices/insights", async (req, res) => {
 });
 
 // Start the server
-app.listen(port, "10.0.2.15", () => {
+app.listen(port, process.env.VITE_SERVER_IP, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
