@@ -7,7 +7,7 @@ const Welcome = () => {
     <>
       <div className="welcome-page-background">
         <div className="title">
-          <img src="src\assets\title-page.png" alt="" id="avgJoeImg" />
+          <img src="src/assets/title-page.png" alt="" id="avgJoeImg" />
           <Link to="/guide">
             <div className="startButton" id="welcomeButton">
               <div className="startButtonLabel">Begin</div>
