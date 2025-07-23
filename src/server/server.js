@@ -8,28 +8,6 @@ const port = 3001;
 
 app.use(cors());
 
-/* app.get('/api/stockPrices', async (req, res) => {
-    try {
-        // Array of stock symbols you want to fetch
-        const symbols = ['SCHK', 'SCHF', 'SCHA', 'BND'];
-
-        // Fetch data for multiple symbols
-        const stockQuotes = await yahooFinance.quote(symbols);
-
-        // Extract relevant data from the response
-        const stockPrices = stockQuotes.map(quote => ({
-            symbol: quote.symbol,
-            price: quote.regularMarketPrice
-        }));
-
-        // Return the stock prices as JSON
-        res.json(stockPrices);
-    } catch (error) {
-        console.error("Error fetching data", error);
-        res.status(500).json({ error: "Failed to fetch stock prices" });
-    }
-}); */
-
 // DYNAMIC SYMBOLS
 app.get("/api/stockPrices", async (req, res) => {
   try {
@@ -112,6 +90,10 @@ app.get("/api/stockPrices/insights", async (req, res) => {
 });
 
 // Start the server
-app.listen(port, process.env.VITE_SERVER_IP, () => {
+/* app.listen(port, process.env.VITE_SERVER_IP, () => {
   console.log(`Server running at http://localhost:${port}`);
+});
+ */
+app.listen(port, () => {
+  console.log(`Server running at netlify: ${port}`);
 });
