@@ -1,8 +1,13 @@
-# React + Vite
+# Average Joe Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### The one-stop-shop to build an investment portfolio
 
-Currently, two official plugins are available:
+***
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Bankers and portfolio managers want to make finance seem complex by throwing around words like yield, beta, and expense ratios. They want to appear to be the only ones smart enough to handle the markets and and make financial decisions. But it doesn't have to be complex!
+
+You just need to know what and how much to invest, and be patient. Investing doesn't need to be complicated.
+
+Average Joe Portfolio makes it simple to input criteria and give you the information you need to go out and start making your financial future a reality!
+
+<https://avgjoeportfolio.netlify.app/>
