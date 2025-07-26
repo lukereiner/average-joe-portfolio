@@ -3,7 +3,6 @@
 ### The one-stop-shop to build an investment portfolio
 
 ***
-![image](https://github.com/lukereiner/average-joe-portfolio/blob/main/public/images/title-page.png?raw=true =450x)
 
 Bankers and portfolio managers want to make finance seem complex by throwing around words like yield, beta, and expense ratios. They want to appear to be the only ones smart enough to handle the markets and and make financial decisions. But it doesn't have to be complex!
 
